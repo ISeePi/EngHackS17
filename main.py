@@ -1,39 +1,10 @@
-freerunningFinal.py
-DETAILS
-ACTIVITY
-freerunningFinal.py
-Sharing Info
-
-General Info
-Type
-Text
-Size
-4 KB (3,705 bytes)
-Storage used
-0 bytesOwned by someone else
-Location
-All Python Scripts and Videos
-Owner
-Tin Vo
-Modified
-12:55 PM by Tin Vo
-Opened
-9:43 PM by me
-Created
-12:55 PM
-Description
-No description
-Download permissions
-Viewers can download
-
-
 # import the necessary packages for picam
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
 import cv2
 # import for lane
-import LaneNavigation as lnav
+import sidewalk_detection as nav
 # import ultrasonic
 from ultrasonic import ultrasonic
 
@@ -94,7 +65,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     if key == ord("q"):
         cv2.destroyAllWidows()
 
-    sidewalkDirection = lnav.get_angle(image)
+    sidewalkDirection = nav.get_angle(image)
     distance = ultrasonicInstance.getDistance()
         
     currentTime = time.time()
